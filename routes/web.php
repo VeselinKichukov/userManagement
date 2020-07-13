@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/registrations','RegistrationController@index');
+Route::get('/registrations/table','RegistrationController@getRegistrations');
+Route::get('/registrations/graph','RegistrationController@graph');
+Route::get('/registrations/register','RegistrationController@register');
+Route::post('/registrations/register','RegistrationController@register');
+Route::get('/users/profile','UsersController@edit')->name('profile.edit');
+Route::patch('/users/profile','UsersController@update')->name('profile.update');
+Route::delete('/users/profile','UsersController@destroy');
